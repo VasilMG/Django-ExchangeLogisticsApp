@@ -1,0 +1,39 @@
+{% extends 'bases/base_logged_in.html' %}
+{% load static %}
+
+{% block page_content %}
+    <article class="my-3" id="validation" style="padding: 10px">
+
+
+        <div>
+            <div class="bd-example-snippet bd-code-snippet">
+                <div class="bd-example">
+                    <form class="row g-3" action="{% url 'create_offer' pk=user.pk %}" method="post">
+                        {% csrf_token %}
+                        {% for item in form %}
+                            <div class="col-md-4">{{ item.label_tag }}
+                                {{ item }}
+                                {% if item.errors %}
+                                    <p style="color: red"> {{ item.errors }}</p>
+                                {% endif %}
+                                {% if item.help_text %}
+                                    <p>{{ item.help_text }}</p>
+                                {% endif %}
+
+
+                            </div>
+                        {% endfor %}
+                        <div>
+                        </div>
+                        <div class="col-12" style="padding: 10px">
+                            <button class="btn btn-primary" type="submit">Create Offer</button>
+
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </article>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'bases/base_logged_in.html' %}
+{% load static %}
+{% block page_content %}
+    <article class="blog-post">
+        <h2 class="blog-post-title mb-1" style="padding: 10px">{{ object.offer_type }} offer
+            number: {{ object.pk }}</h2>
+        <p class="blog-post-meta" style="padding-left: 10px"> Published on: {{ object.created_on }}</p>
+        <ul>
+            <li style="padding: 10px"> Loading date: {{ object.loading_date }}</li>
+            <li style="padding: 10px"> Loading address: {{ object.loading_country }}, {{ object.loading_place }}</li>
+            <li style="padding: 10px"> Load size: {{ object.load_size }} loading meters</li>
+            <li style="padding: 10px"> Load weight: {{ object.weight }} tons</li>
+            <li style="padding: 10px"> Unloading
+                address: {{ object.unloading_country }}, {{ object.unloading_place }}</li>
+            <li style="padding: 10px"> Unloading date: {{ object.unloading_date }}</li>
+
+            <li style="padding: 10px"> Comments: {{ object.comment }}
+            </li>
+        </ul>
+        <div style="padding: 15px">
+            <a href="{% url 'profile_details_company' pk=company.pk %}">
+                <p> Company: {{ company.company_name }}</p>
+            </a>
+            <p> Contact person: {{ company.contact_person }}</p>
+            <p> Email: {{ company.company_email }}</p>
+            <p> Phone Number: {{ company.phone_number }}</p>
+        </div>
+
+        <div>
+            {% if edit and delete %}
+
+                <div class="bd-example" style="padding-left: 20px">
+                    <a href="{% url 'edit_offer' pk=object.pk %}">
+                        <button type="button" class="btn btn-success">Edit</button>
+                    </a>
+                    <a href="{% url 'delete_offer' pk=object.pk %}">
+                        <button type="button" class="btn btn-danger">Delete</button>
+                    </a>
+
+                </div>
+
+            {% endif %}
+        </div>
+    </article>
+
+{% endblock %}
