@@ -1,5 +1,7 @@
 # ExchangeLogisticsApp
-Basic app for a logistics company with built in freight echange built with:
+Basic app for a logistics company with built in freight echange.
+
+Stack used:
  - python
  - django - server side rendering
  - bootstrap - carousel templates
@@ -15,6 +17,23 @@ Basic app for a logistics company with built in freight echange built with:
  Every offer includes information about the company that had posted it and also a link to this company's profile, where the user can see all actual offers of this particular company.
  
  # Run the project
+ Since the project is data dependent I have also made an image working with some sample data, so you can browse through the app.
+ 
+ I. Using Docker image
+ 
+ You can pull the image from Docker Hub https://hub.docker.com/r/vasilmg/logistics_app
+ 
+ 1. Execute the pull command - docker pull vasilmg/logistics_app
+ 
+ 2. Find the image id:
+ - docker image ls
+ 
+ 3. Run the image:
+ - docker run --name <desired_name>  -dp 8000:8000 <image_id> python manage.py runserver 0.0.0.0:8000
+ 
+ 4. Open your browser and type - http://127.0.0.1:8000/ or http://localhost:8000/
+ 
+ II. Clone the repository from GitHub
  
  1. Clone the repository
 
