@@ -13,7 +13,7 @@ Stack used:
  
  The second feature of the app is a freight exchange where registered users can publish their loads or free trucks.
  A user can sign up with username and password. After that a blank profile is created and the user should fill the neccessary data for his profile.
- After that he can publish freight or truck offers on the market.
+ After that he can publish freight or truck offers on the market. The user can search for siutable offers on the market and see the offer's details by clicking on it.
  Every offer includes information about the company that had posted it and also a link to this company's profile, where the user can see all actual offers of this particular company.
  
  # Run the project
