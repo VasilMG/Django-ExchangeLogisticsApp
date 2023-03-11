@@ -3,7 +3,7 @@ from django.urls import path
 from ExchangeLogistics.accounts.api.views import UpadateUserProfileApiView
 from ExchangeLogistics.exchange.api.views import ProfileDetailsApiView, ViewDetailsDeleteUserProfileApiView, \
     CreateOfferApiView, \
-    UpdateOfferApiView, DeleteOfferApiView, ListOffersApiView, SupportDetalisApiView
+    UpdateOfferApiView, DeleteOfferApiView, ListOffersApiView, SupportDetailsApiView
 
 urlpatterns = [
     path('<int:pk>/profile', ProfileDetailsApiView.as_view(), name='api_profile_details'),
