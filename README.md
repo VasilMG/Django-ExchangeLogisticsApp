@@ -4,7 +4,13 @@ Basic app for a logistics company with built in freight echange.
 Stack used:
  - python
  - django - server side rendering
+ - django rest framework
  - bootstrap - carousel templates
+ 
+ This project has both - server side rendering and REST APIs.
+ All endpoints and methods are visible in the swagger url -- - http://127.0.0.1:8000/swagger-ui/
+ 
+ 
  
  In this app we have three common templates where the information for the logistics company is displayed.
  I have put some exemplary text in the templates in order for the app to start without creating a superuser.
@@ -63,4 +69,6 @@ Stack used:
 ![front page](https://github.com/VasilMG/Django-ExchangeLogisticsApp/blob/main/Screenshots/Screenshot%202023-03-05%20231650.png)
 
 ![front page](https://github.com/VasilMG/Django-ExchangeLogisticsApp/blob/main/Screenshots/Screenshot%202023-03-05%20232347.png)
+
+![front page](https://github.com/VasilMG/Django-ExchangeLogisticsApp/blob/main/Screenshots/Screenshot%202023-03-11%20232327.png)
 
