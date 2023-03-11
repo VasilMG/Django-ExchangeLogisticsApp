@@ -1,0 +1,56 @@
+{% extends 'common/../bases/base_not_logged.html' %}
+{% block page_content %}
+
+    <section id="components">
+        <h2 class="sticky-xl-top fw-bold pt-3 pt-xl-5 pb-2 pb-xl-3">Components</h2>
+
+        <article class="my-3" id="accordion">
+
+
+            <div>
+                <div class="bd-example-snippet bd-code-snippet">
+                    <div class="bd-example">
+                        <div class="accordion" id="accordionExample">
+                            {% for office in offices %}
+                                <div class="accordion-item">
+                                    <h4 class="accordion-header" id="headingOne">
+                                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                                data-bs-target="#collapseOne" aria-expanded="true"
+                                                aria-controls="collapseOne">
+                                            {{ office.country }}
+                                        </button>
+                                    </h4>
+
+
+                                    <div id="collapseOne" class="accordion-collapse collapse show"
+                                         aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            <ul>
+                                        <li>City:
+                                            <div style="font-weight: bold">{{ office.city }}</div>
+                                        </li>
+                                        <li>Address:
+                                            <div style="font-weight: bold">{{ office.address }}</div>
+                                        </li>
+                                        <li>Email:
+                                            <div style="font-weight: bold">{{ office.contact_email }}</div>
+                                        </li>
+                                        <li>Phone number:
+                                            <div style="font-weight: bold">{{ office.phone_number }}</div>
+                                        </li>
+                                    </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </article>
+    </section>
+
+
+{% endblock %}
