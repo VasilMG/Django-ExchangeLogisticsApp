@@ -42,8 +42,8 @@ def network(request):
 
 
 def about(request):
-    context = {
-        ''' After we create a model for the AboutData'''
-        # 'about_data': AboutData.objects.get(pk=1)
-    }
-    return render(request, 'common/about.html', context)
+    ''' After we create a model for the AboutData'''
+    # context = {
+    #     'about_data': AboutData.objects.get(pk=1)
+    # }
+    return render(request, 'common/about.html') # Add contex here if you have created a model
