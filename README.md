@@ -8,7 +8,7 @@ Stack used:
  - bootstrap - carousel templates
  
  This project has both - server side rendering and REST APIs.
- All endpoints and methods are visible in the swagger url -- - http://127.0.0.1:8000/swagger-ui/
+ All endpoints are visible in the swagger url -- - http://127.0.0.1:8000/swagger-ui/
  
  
  
@@ -25,7 +25,7 @@ Stack used:
  # Run the project
  Since the project is data dependent I have also made an image working with some sample data, so you can browse through the app.
  
- I. Using Docker image
+ I. Using Docker image - (please note that the docker image has no REST APIs, it is only with server side rendering)
  
  You can pull the image from Docker Hub https://hub.docker.com/r/vasilmg/logistics_app
  
@@ -44,7 +44,8 @@ Stack used:
  1. Clone the repository
 
  2. Open it with your preferred IDE and create a virtual environment
- - Here is a useful link - https://djangowaves.com/tips-tricks/fix-import-error-no-module-named-django-core-management/
+ - python3 -m venv ./env   - to create a virtual environment
+ - source ./env/bin/activate - to activate it
  
  3. Install all dependencies
   - pip install -r requirements.txt
