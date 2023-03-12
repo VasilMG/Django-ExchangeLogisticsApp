@@ -57,7 +57,7 @@ Stack used:
  5. Run the project
  - python manage.py runserver
 
- 6. Finally open th project in your browser - http://127.0.0.1:8000/ or http://localhost:8000/
+ 6. Finally open the project in your browser - http://127.0.0.1:8000/ or http://localhost:8000/
  
  I have used the default SQLite database for this basic project.
  
