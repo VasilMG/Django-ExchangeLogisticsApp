@@ -1,5 +1,5 @@
 # ExchangeLogisticsApp
-Basic app for a logistics company with built in freight echange.
+Basic app for a logistics company with built in freight exchange.
 
 Stack used:
  - python
