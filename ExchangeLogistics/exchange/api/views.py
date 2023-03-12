@@ -61,6 +61,7 @@ class ListOffersApiView(LoginRequiredMixin, rest_views.ListAPIView):
     serializer_class = ShortOfferSerializer
     queryset = Offer.objects.all().order_by('-created_on')
 
-class SupportDetailsApiView(LoginRequiredMixin, rest_views.RetrieveAPIView):
+
+class SupportDetailsApiView(LoginRequiredMixin, rest_views.ListAPIView):
     serializer_class = SupportSerializer
     queryset = Support.objects.all()
