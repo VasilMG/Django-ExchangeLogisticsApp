@@ -23,9 +23,10 @@ Stack used:
  Every offer includes information about the company that had posted it and also a link to this company's profile, where the user can see all actual offers of this particular company.
  
  # Run the project
- Since the project is data dependent I have also made an image working with some sample data, so you can browse through the app.
+ Since the project is data dependent I have also made an image working with some sample data, so you can just create a user and a profile and browse through the app.
+ You can also test the api endpoints.
  
- I. Using Docker image - (please note that the docker image has no REST APIs, it is only with server side rendering)
+ I. Using Docker image:
  
  You can pull the image from Docker Hub https://hub.docker.com/r/vasilmg/logistics_app
  
