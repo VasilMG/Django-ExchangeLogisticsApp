@@ -15,7 +15,7 @@
         <h1 class="display-5 fw-bold lh-1 mb-3" style="color: white"> Hello, {{ object.company_name }}!</h1>
         {% else %}
         <h1 class="display-5 fw-bold lh-1 mb-3" style="color: white">{{ object.company_name }}!</h1>
-        {% endfor %}
+        {% endif %}
         <p class="lead" style="color: black; font-weight: normal">  Address:  {{ object.address }}, {{ object.country }}</p>
         <p class="lead" style="color: black; font-weight: normal">  Contact person: {{ object.contact_person }} </p>
         <p class="lead" style="color: black; font-weight: normal">  Email: {{ object.company_email }} </p>
@@ -41,7 +41,7 @@
     <h3 style="font-weight: bolder">Your offers on the market</h3>
     {% else %}
     <h3 style="font-weight: bolder">Offers on the market</h3>
-    {% endfor %}
+    {% endif %}
     </div>
 
     <div class="bd-example-snippet bd-code-snippet">
