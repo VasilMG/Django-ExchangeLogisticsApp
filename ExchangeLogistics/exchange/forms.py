@@ -51,24 +51,24 @@ class CreateOfferForm(forms.ModelForm):
     
     def clean_loading_place(self):
         value = self.cleaned_data.get('loading_place')
-        if not value.isalpha():
+        if any(char.isdigit() for char in value):
             raise forms.ValidationError("Loading place cannot contain digits.")
         return value
 
     def clean_unloading_place(self):
         value = self.cleaned_data.get('unloading_place')
-        if not value.isalpha():
+        if any(char.isdigit() for char in value):
             raise forms.ValidationError("Unloading place cannot contain digits.")
         return value
 
     def clean_loading_country(self):
         value = self.cleaned_data.get('loading_country')
-        if not value.isalpha():
-            raise forms.ValidationError('Loading country cannot contain digits.')
+        if any(char.isdigit() for char in value):
+            raise forms.ValidationError("Loading country cannot contain digits.")
         return value
 
     def clean_unloading_country(self):
         value = self.cleaned_data.get('unloading_country')
-        if not value.isalpha():
-            raise forms.ValidationError('Unloading country cannot contain digits.')
+        if any(char.isdigit() for char in value):
+            raise forms.ValidationError("Unloading country cannot contain digits.")
         return value
