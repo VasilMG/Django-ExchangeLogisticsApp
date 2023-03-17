@@ -72,7 +72,7 @@ def login_view(request):
                 "invalid_login"] = 'Please enter a correct username and password. ' \
                                    'Note that both fields may be case-sensitive.'
             error_message = form.error_messages["invalid_login"]
-            return render(request, 'accounts/sign_in.html', {'form': form, 'message': error_message, })
+            return render(request, 'accounts/sign_in.html', {'form': form, 'message': error_message, }, status=404)
     context = {
         'form': form,
     }

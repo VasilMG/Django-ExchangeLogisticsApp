@@ -5,36 +5,27 @@ from django.urls import reverse
 
 from ExchangeLogistics.accounts.forms import CreateCompanyProfileForm
 from ExchangeLogistics.accounts.models import CompanyProfile
+from ExchangeLogistics.accounts.utils import BaseTestCase
 
 UserModel = get_user_model()
 
 '''Form Tests'''
 
 
-class TestCreateCompanyAccountForm(TestCase):
+class TestCreateCompanyAccountForm(BaseTestCase):
 
     def test_create_blank_profile_when_user_form_valid_expect_created_profile(self):
-        entered_data = {
-            'username': 'newuser1',
-            'password1': '3048lask',
-            'password2': '3048lask',
-        }
-        self.client.post(reverse('register'), data=entered_data)
+        user = self.create_user()
 
         self.assertIsNotNone(CompanyProfile.objects.get(pk=1))
 
     # invalid credentials not tested since it is a base django form
 
 
-class TestCreateCompanyProfileForm(TestCase):
+class TestCreateCompanyProfileForm(BaseTestCase):
 
     def test_create_profile_form_when_form_is_valid_expect_updated_info(self):
-        entered_data1 = {
-            'username': 'newuser1',
-            'password1': '3048lask',
-            'password2': '3048lask',
-        }
-        self.client.post(reverse('register'), data=entered_data1)
+        user = self.create_user()
 
         entered_data2 = {
             'company_name': 'New Company Ltd',
@@ -51,12 +42,7 @@ class TestCreateCompanyProfileForm(TestCase):
         self.assertIsNotNone(updated_profile)
 
     def test_create_profile_form_when_form_country_is_not_valid_expect_error_message(self):
-        entered_data1 = {
-            'username': 'newuser1',
-            'password1': '3048lask',
-            'password2': '3048lask',
-        }
-        self.client.post(reverse('register'), data=entered_data1)
+        user = self.create_user()
 
         entered_data2 = {
             'company_name': 'New Company Ltd',
@@ -74,12 +60,7 @@ class TestCreateCompanyProfileForm(TestCase):
         self.assertIn('Country cannot contain digits.', form.errors['country'])
 
     def test_create_profile_form_when_form_city_is_not_valid_expect_error_message(self):
-        entered_data1 = {
-            'username': 'newuser1',
-            'password1': '3048lask',
-            'password2': '3048lask',
-        }
-        self.client.post(reverse('register'), data=entered_data1)
+        user = self.create_user()
 
         entered_data2 = {
 
@@ -98,12 +79,7 @@ class TestCreateCompanyProfileForm(TestCase):
         self.assertIn('City cannot contain digits.', form.errors['city'])
 
     def test_create_profile_form_when_form_contact_person__is_not_valid_expect_error_message(self):
-        entered_data1 = {
-            'username': 'newuser1',
-            'password1': '3048lask',
-            'password2': '3048lask',
-        }
-        self.client.post(reverse('register'), data=entered_data1)
+        user = self.create_user()
 
         entered_data2 = {
 
@@ -122,12 +98,7 @@ class TestCreateCompanyProfileForm(TestCase):
         self.assertIn('The name cannot contain digits.', form.errors['contact_person'])
 
     def test_create_profile_form_when_form_phone_number_doesnt_start_with_plus__expect_error_message(self):
-        entered_data1 = {
-            'username': 'newuser1',
-            'password1': '3048lask',
-            'password2': '3048lask',
-        }
-        self.client.post(reverse('register'), data=entered_data1)
+        user = self.create_user()
 
         entered_data2 = {
 
@@ -146,12 +117,7 @@ class TestCreateCompanyProfileForm(TestCase):
         self.assertIn("Value must start with '+' followed by 9 up to 15 digits.", form.errors['phone_number'])
 
     def test_create_profile_form_when_form_phone_number_contains_more_than_15_digits__expect_error_message(self):
-        entered_data1 = {
-            'username': 'newuser1',
-            'password1': '3048lask',
-            'password2': '3048lask',
-        }
-        self.client.post(reverse('register'), data=entered_data1)
+        user = self.create_user()
 
         entered_data2 = {
             # 'user_id': 1,
@@ -170,12 +136,7 @@ class TestCreateCompanyProfileForm(TestCase):
         self.assertIn("Value must start with '+' followed by 9 up to 15 digits.", form.errors['phone_number'])
 
     def test_create_profile_form_when_form_phone_number_contains_less_than_9_digits__expect_error_message(self):
-        entered_data1 = {
-            'username': 'newuser1',
-            'password1': '3048lask',
-            'password2': '3048lask',
-        }
-        self.client.post(reverse('register'), data=entered_data1)
+        user = self.create_user()
 
         entered_data2 = {
 
@@ -211,15 +172,10 @@ class TestCreateCustomUserView(TestCase):
         self.assertEqual(redirect_url, response.headers.get('Location'))
 
 
-class TestUpdateCompanyProfileView(TestCase):
+class TestUpdateCompanyProfileView(BaseTestCase):
 
     def test_update_company_profile_view_when_data_is_valid_expect_redirect_to_profile_details(self):
-        entered_data1 = {
-            'username': 'newuser1',
-            'password1': '3048lask',
-            'password2': '3048lask',
-        }
-        self.client.post(reverse('register'), data=entered_data1)
+        user = self.create_user()
 
         entered_data2 = {
             'company_name': 'New Company Ltd',
@@ -235,3 +191,31 @@ class TestUpdateCompanyProfileView(TestCase):
         redirect_url = f'/exchange/1/profile/'
 
         self.assertEqual(redirect_url, response.headers.get('Location'))
+
+
+class TestLoginView(BaseTestCase):
+
+    def test_login_view_when_data_is_valid(self):
+        user = self.create_user()
+
+        entered_data = {
+            'username': 'newuser1',
+            'password': '3048lask'
+        }
+
+        response = self.client.post(reverse('sign_in'), data=entered_data)
+
+        redirect_url = f'/exchange/1/profile/'
+        self.assertEqual(redirect_url, response.headers.get('Location'))
+
+    def test_login_view_when_data_is_not_valid(self):
+        user = self.create_user()
+
+        entered_data = {
+            'username': 'newuser123',
+            'password': '3048lask'
+        }
+
+        response = self.client.post(reverse('sign_in'), data=entered_data)
+
+        self.assertEqual(404, response.status_code)

@@ -41,7 +41,7 @@ def create_offer(request, pk):
             offer.save()
             return HttpResponseRedirect(reverse('offer_details', kwargs={'pk': offer.pk}))
         else:
-            return render(request, 'exchange/create_offer.html', {'form': form})
+            return render(request, 'exchange/create_offer.html', {'form': form}, status=404)
     context = {
 
         'form': form,
@@ -119,7 +119,7 @@ class EditCompanyProfileView(LoginRequiredMixin, generic.UpdateView):
         context = {
             'form': form,
         }
-        return render(self.request, 'exchange/edit_profile.html', context)
+        return render(self.request, 'exchange/edit_profile.html', context, status=404)
 
 
 class DeleteProfile(LoginRequiredMixin, generic.DeleteView):
