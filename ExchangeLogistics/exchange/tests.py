@@ -20,24 +20,19 @@ UserModel = get_user_model()
 class TestOfferForm(BaseTestCase):
 
     def test_offer_form_when_data_is_valid_expect_created_offer(self):
-        # entered_data1 = {
-        #     'username': 'newuser1',
-        #     'password1': '3048lask',
-        #     'password2': '3048lask',
-        # }
-        # self.client.post(reverse('register'), data=entered_data1)
-        user = self.create_user()
 
-        # user = UserModel.objects.get(pk=1)
+        tomorrow = datetime.date.today() + datetime.timedelta(days=1)
+
+        user = self.create_user()
 
         entered_data = {
             'offer_type': 'Freight',
-            'loading_date': datetime.date(2023, month=3, day=25),
+            'loading_date': datetime.date.today(),
             'loading_country': 'Bulgaria',
             'loading_place': 'Sofia',
             'load_size': 10.5,
             'weight': 10.5,
-            'unloading_date': datetime.date(2023, month=3, day=26),
+            'unloading_date': tomorrow,
             'unloading_country': 'Bulgaria',
             'unloading_place': 'Plovdiv',
             'company': user,
@@ -49,16 +44,17 @@ class TestOfferForm(BaseTestCase):
         self.assertIsNotNone(Offer.objects.get(pk=1))
 
     def test_offer_form_when_loading_date_is_in_the_past_expect_error(self):
+        yesterday = datetime.date.today() - datetime.timedelta(days=1)
         user = self.create_user()
 
         entered_data = {
             'offer_type': 'Freight',
-            'loading_date': datetime.date(2023, month=3, day=16),  # current date 17.03.2023
+            'loading_date': yesterday,
             'loading_country': 'Bulgaria',
             'loading_place': 'Sofia',
             'load_size': 10.5,
             'weight': 10.5,
-            'unloading_date': datetime.date(2023, month=3, day=26),
+            'unloading_date': datetime.date.today(),
             'unloading_country': 'Bulgaria',
             'unloading_place': 'Plovdiv',
             'company': user,
@@ -69,16 +65,17 @@ class TestOfferForm(BaseTestCase):
         self.assertIn('Date cannot be in the past.', form.errors['loading_date'])
 
     def test_offer_form_when_unloading_date_is_in_the_past_expect_error(self):
+        yesterday = datetime.date.today() - datetime.timedelta(days=1)
         user = self.create_user()
 
         entered_data = {
             'offer_type': 'Freight',
-            'loading_date': datetime.date(2023, month=3, day=20),  # current date 17.03.2023
+            'loading_date': datetime.date.today(),
             'loading_country': 'Bulgaria',
             'loading_place': 'Sofia',
             'load_size': 10.5,
             'weight': 10.5,
-            'unloading_date': datetime.date(2023, month=3, day=16),
+            'unloading_date': yesterday,
             'unloading_country': 'Bulgaria',
             'unloading_place': 'Plovdiv',
             'company': user,
@@ -89,16 +86,18 @@ class TestOfferForm(BaseTestCase):
         self.assertIn('Date cannot be in the past.', form.errors['unloading_date'])
 
     def test_offer_form_when_unloading_date_is_before_loading_date_expect_error(self):
+        tomorrow = datetime.date.today() + datetime.timedelta(days=1)
+
         user = self.create_user()
 
         entered_data = {
             'offer_type': 'Freight',
-            'loading_date': datetime.date(2023, month=3, day=20),  # current date 17.03.2023
+            'loading_date': tomorrow,
             'loading_country': 'Bulgaria',
             'loading_place': 'Sofia',
             'load_size': 10.5,
             'weight': 10.5,
-            'unloading_date': datetime.date(2023, month=3, day=19),
+            'unloading_date': datetime.date.today(),
             'unloading_country': 'Bulgaria',
             'unloading_place': 'Plovdiv',
             'company': user,
@@ -109,16 +108,17 @@ class TestOfferForm(BaseTestCase):
         self.assertIn('The unloading date cannot be before the loading date', form.errors['unloading_date'])
 
     def test_offer_form_when_load_size_greater_than_15__expect_error(self):
+        tomorrow = datetime.date.today() + datetime.timedelta(days=1)
         user = self.create_user()
 
         entered_data = {
             'offer_type': 'Freight',
-            'loading_date': datetime.date(2023, month=3, day=20),  # current date 17.03.2023
+            'loading_date': datetime.date.today(),
             'loading_country': 'Bulgaria',
             'loading_place': 'Sofia',
             'load_size': 16,
             'weight': 10.5,
-            'unloading_date': datetime.date(2023, month=3, day=21),
+            'unloading_date': tomorrow,
             'unloading_country': 'Bulgaria',
             'unloading_place': 'Plovdiv',
             'company': user,
@@ -129,16 +129,17 @@ class TestOfferForm(BaseTestCase):
         self.assertIn('Value must be between 0 and 15 meters', form.errors['load_size'])
 
     def test_offer_form_when_load_size_less_than_0__expect_error(self):
+        tomorrow = datetime.date.today() + datetime.timedelta(days=1)
         user = self.create_user()
 
         entered_data = {
             'offer_type': 'Freight',
-            'loading_date': datetime.date(2023, month=3, day=20),  # current date 17.03.2023
+            'loading_date': datetime.date.today(),  # current date 17.03.2023
             'loading_country': 'Bulgaria',
             'loading_place': 'Sofia',
             'load_size': -1,
             'weight': 10.5,
-            'unloading_date': datetime.date(2023, month=3, day=21),
+            'unloading_date': tomorrow,
             'unloading_country': 'Bulgaria',
             'unloading_place': 'Plovdiv',
             'company': user,
@@ -149,16 +150,17 @@ class TestOfferForm(BaseTestCase):
         self.assertIn('Value must be between 0 and 15 meters', form.errors['load_size'])
 
     def test_offer_form_when_load_weight_less_than_0__expect_error(self):
+        tomorrow = datetime.date.today() + datetime.timedelta(days=1)
         user = self.create_user()
 
         entered_data = {
             'offer_type': 'Freight',
-            'loading_date': datetime.date(2023, month=3, day=20),  # current date 17.03.2023
+            'loading_date': datetime.date.today(),
             'loading_country': 'Bulgaria',
             'loading_place': 'Sofia',
             'load_size': 10,
             'weight': -1,
-            'unloading_date': datetime.date(2023, month=3, day=21),
+            'unloading_date':tomorrow,
             'unloading_country': 'Bulgaria',
             'unloading_place': 'Plovdiv',
             'company': user,
@@ -169,16 +171,18 @@ class TestOfferForm(BaseTestCase):
         self.assertIn('Value must be between 0 and 28 tons', form.errors['weight'])
 
     def test_offer_form_when_load_weight_greater_than_28__expect_error(self):
+        tomorrow = datetime.date.today() + datetime.timedelta(days=1)
         user = self.create_user()
+
 
         entered_data = {
             'offer_type': 'Freight',
-            'loading_date': datetime.date(2023, month=3, day=20),  # current date 17.03.2023
+            'loading_date': datetime.date.today(),
             'loading_country': 'Bulgaria',
             'loading_place': 'Sofia',
             'load_size': 10,
             'weight': 29,
-            'unloading_date': datetime.date(2023, month=3, day=21),
+            'unloading_date': tomorrow,
             'unloading_country': 'Bulgaria',
             'unloading_place': 'Plovdiv',
             'company': user,
@@ -195,18 +199,20 @@ class TestOfferForm(BaseTestCase):
 class TestCreateOfferView(BaseTestCase):
 
     def test_create_offer_view_when_data_is_valid_expect_redirect_to_offer_details(self):
+        tomorrow = datetime.date.today() + datetime.timedelta(days=1)
+
         user = self.create_user()
 
         self.client.login(username=user.username, password=user.password)
 
         entered_data = {
             'offer_type': 'Freight',
-            'loading_date': datetime.date(2023, month=3, day=20),  # current date 17.03.2023
+            'loading_date': datetime.date.today(),
             'loading_country': 'Bulgaria',
             'loading_place': 'Sofia',
             'load_size': 10,
             'weight': 20,
-            'unloading_date': datetime.date(2023, month=3, day=21),
+            'unloading_date': tomorrow,
             'unloading_country': 'Bulgaria',
             'unloading_place': 'Plovdiv',
             'company': user,
@@ -219,17 +225,18 @@ class TestCreateOfferView(BaseTestCase):
 
     def test_create_offer_view_when_data_is_not_valid_expect_reverse_status_404(self):
         user = self.create_user()
+        tomorrow = datetime.date.today() + datetime.timedelta(days=1)
 
         self.client.login(username=user.username, password=user.password)
 
         entered_data = {
             'offer_type': 'Freight',
-            'loading_date': datetime.date(2023, month=3, day=20),  # current date 17.03.2023
+            'loading_date': datetime.date.today(),
             'loading_country': 'Bulgaria',
             'loading_place': 'Sofia',
             'load_size': 10,
-            'weight': 29,
-            'unloading_date': datetime.date(2023, month=3, day=21),
+            'weight': 29, # not valid
+            'unloading_date': tomorrow,
             'unloading_country': 'Bulgaria',
             'unloading_place': 'Plovdiv',
             'company': user,
@@ -244,18 +251,19 @@ class TestCreateOfferView(BaseTestCase):
 class TestEditOfferView(BaseTestCase):
 
     def test_edit_offer_view_when_data_is_valid_expect_redirect_offer_details(self):
+        tomorrow = datetime.date.today() + datetime.timedelta(days=1)
         user = self.create_user()
 
         self.client.login(username=user.username, password=user.password)
 
         entered_data1 = {
             'offer_type': 'Freight',
-            'loading_date': datetime.date(2023, month=3, day=20),  # current date 17.03.2023
+            'loading_date': datetime.date.today(),
             'loading_country': 'Bulgaria',
             'loading_place': 'Sofia',
             'load_size': 10,
             'weight': 20,
-            'unloading_date': datetime.date(2023, month=3, day=21),
+            'unloading_date': tomorrow,
             'unloading_country': 'Bulgaria',
             'unloading_place': 'Plovdiv',
             'company': user,
@@ -265,12 +273,12 @@ class TestEditOfferView(BaseTestCase):
 
         entered_data2 = {
             'offer_type': 'Freight',
-            'loading_date': datetime.date(2023, month=3, day=20),  # current date 17.03.2023
+            'loading_date': datetime.date.today(),
             'loading_country': 'Germany',
             'loading_place': 'Berlin',
             'load_size': 10,
             'weight': 20,
-            'unloading_date': datetime.date(2023, month=3, day=21),
+            'unloading_date': tomorrow,
             'unloading_country': 'Bulgaria',
             'unloading_place': 'Plovdiv',
             'company': user,
@@ -283,17 +291,18 @@ class TestEditOfferView(BaseTestCase):
 
     def test_edit_offer_view_when_data_is_not_valid_expect_redirect_with_errors(self):
         user = self.create_user()
+        tomorrow = datetime.date.today() + datetime.timedelta(days=1)
 
         self.client.login(username=user.username, password=user.password)
 
         entered_data1 = {
             'offer_type': 'Freight',
-            'loading_date': datetime.date(2023, month=3, day=20),  # current date 17.03.2023
+            'loading_date': datetime.date.today(),
             'loading_country': 'Bulgaria',
             'loading_place': 'Sofia',
             'load_size': 10,
             'weight': 20,
-            'unloading_date': datetime.date(2023, month=3, day=21),
+            'unloading_date': tomorrow,
             'unloading_country': 'Bulgaria',
             'unloading_place': 'Plovdiv',
             'company': user,
@@ -303,12 +312,12 @@ class TestEditOfferView(BaseTestCase):
 
         entered_data2 = {
             'offer_type': 'Freight',
-            'loading_date': datetime.date(2023, month=3, day=20),  # current date 17.03.2023
+            'loading_date': datetime.date.today(),
             'loading_country': 'Germany',
             'loading_place': '11',  # incorrect value
             'load_size': 30,  # incorrect value
             'weight': 29,  # incorrect value
-            'unloading_date': datetime.date(2023, month=3, day=21),
+            'unloading_date': tomorrow,
             'unloading_country': 'Bulgaria',
             'unloading_place': 'Plovdiv',
             'company': user,
@@ -367,14 +376,16 @@ class TestEditCompanyProfileView(BaseTestCase):
 class TestDateValidator(TestCase):
 
     def test_date_validator_when_date_is_in_the_past_expect_error(self):
-        value = datetime.date(2023, month=3, day=16)  # current date 17.03.2023
+        value = datetime.date.today() - datetime.timedelta(days=1)
         with self.assertRaises(ValueError) as ve:
             date_validator(value)
         self.assertIsNotNone(ve.exception)
 
     def test_date_validator_when_date_is_in_the_future_expect_return_date(self):
-        value = datetime.date(2023, month=3, day=19)  # current date 17.03.2023
-        self.assertEqual(value, date_validator(value))
+        today = datetime.date.today()
+        tomorrow = today + datetime.timedelta(days=1)
+        self.assertEqual(tomorrow, date_validator(tomorrow))
+
 
 
 class TestValidateLoadSize(TestCase):
