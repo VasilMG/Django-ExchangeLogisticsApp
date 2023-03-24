@@ -51,7 +51,7 @@ Stack used:
  3. Install all dependencies
   - pip install -r requirements.txt
   
- 4. Make the migrations ( I have made a custom user so if you just run it without migrations you will get an error. )
+ 4. Make the migrations
   - python manage.py makemigrations
   - python manage.py migrate
  
