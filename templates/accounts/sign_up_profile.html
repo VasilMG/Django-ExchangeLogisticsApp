@@ -14,7 +14,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.108.0">
-    <title>Carousel Template · Bootstrap v5.3</title>
+    <title>Exchange Logistics</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/carousel/">
 
@@ -192,12 +192,6 @@
                     </li>
                 </ul>
 
-                {% if user.is_authenticated %}
-                    <div style="color: whitesmoke; padding-right: 10px">
-                    Hello {{ user }}!
-                    </div>
-                {% endif %}
-
                 {% if not user.is_authenticated %}
                 <div class="text-end">
                     <a href="{% url 'sign_in' %}">
@@ -240,44 +234,6 @@
 
         <div>
 
-{#          <div class="col-md-4">#}
-{#            <label class="form-label">Last name#}
-{##}
-{#                  <input type="text" class="form-control">#}
-{#              </label>#}
-{##}
-{#          </div>#}
-{#          <div class="col-md-4">#}
-{#            <label class="form-label">Email#}
-{##}
-{#                  <input type="text" class="form-control">#}
-{#              </label>#}
-{##}
-{#          </div>#}
-{#          <div class="col-md-4">#}
-{#            <label class="form-label">Addrress#}
-{#                  <input type="text" class="form-control">#}
-{#              </label>#}
-{##}
-{#          </div>#}
-{#          <div class="col-md-4">#}
-{#            <label class="form-label">Department#}
-{#                  <input type="text" class="form-control">#}
-{#              </label>#}
-{##}
-{#          </div>#}
-{#          <div class="col-md-4">#}
-{#            <label class="form-label">ZIP#}
-{#                  <input type="text" class="form-control">#}
-{#              </label>#}
-{##}
-{#          </div>#}
-{#            class="btn btn-primary" type="submit"#}
-{#          <div class="col-12">#}
-{#              <a href="{% url 'profile_details' %}">#}
-{#            <button>Submit form</button>#}
-{#                  </a>#}
-{#          </div>#}
                 </div>
                     <div class="col-12" style="padding: 10px">
                     <button class="btn btn-primary" type="submit">Submit</button>

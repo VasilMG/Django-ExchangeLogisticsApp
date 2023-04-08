@@ -6,36 +6,30 @@
         <div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
         <form style="width: 300px" action="{% url 'register' %}" method="post">
             {% csrf_token %}
-{#             <div>{{ form.username }}</div>#}
-{#            <div>{{ form.password1 }}</div>#}
-{#            <div>{{ form.password2 }}</div>#}
+
 
           <div class="form-floating mb-3" style="padding: 5px">
                <h6>  Username</h6>
-{#              <label for="floatingInput" style="padding: 5px">Username</label>#}
+
               {{ form.username }}
               {% if form.errors %}
               <p> {{ form.username.errors }}</p>
                 {% endif %}
-{#            <input type="text" class="form-control" id="floatingInput" placeholder="Your username">#}
 
           </div>
           <div class="form-floating" style="padding: 5px">
               <h6>Password</h6>
-{#              <label for="floatingInput" style="padding: 5px">Password</label>#}
+
               {{ form.password1 }}
-{#            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">#}
-{#            <label for="floatingPassword">Password</label>#}
+
               {% if form.errors %}
               <p> {{ form.password1.errors }}</p>
                 {% endif %}
           </div>
             <div class="form-floating" style="padding: 5px">
                 <h6>Repeat password</h6>
-{#                <label for="floatingInput" style="padding: 5px">Repeat Password</label>#}
               {{ form.password2 }}
-{#            <input type="password" class="form-control" id="floatingPassword" placeholder="Repeat Password">#}
-{#            <label for="floatingPassword">Repeat Password</label>#}
+
                 {% if form.errors %}
               <p> {{ form.password2.errors }}</p>
                 {% endif %}
@@ -46,10 +40,6 @@
           </div>
         </form>
         </div></div>
-{#          <div class="col-12" style="padding: 10px">#}
-{#            <button class="btn btn-primary" type="submit">Submit form</button>#}
-{##}
-{#          </div>#}
 
       </div>
     </article>

@@ -144,7 +144,6 @@ def confirmation_delete_profile(request, pk):
 def delete_offer(request, pk):
     if request.method == "GET":
         offer = Offer.objects.get(pk=pk)
-        print(offer.pk)
 
         offer.delete()
         return HttpResponseRedirect(reverse('profile_details_company', kwargs={'pk': request.user.pk}))
