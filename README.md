@@ -57,8 +57,13 @@ Stack used:
  
  5. Run the project
  - python manage.py runserver
-
+ 
  6. Finally open the project in your browser - http://127.0.0.1:8000/ or http://localhost:8000/
+ 
+ - The services and network data is based on models. These models are registered in the admin view.
+ - If you wish, you can create a superuser with the command  -> python manage.py createsuperuser
+ - After that through the admin page (http://127.0.0.1:8000/admin/) you can add some users or data to the models registered there.
+
  
  I have used the default SQLite database for this basic project.
  
