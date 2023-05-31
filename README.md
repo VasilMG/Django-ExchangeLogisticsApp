@@ -1,5 +1,5 @@
 # ExchangeLogisticsApp
-This is an app for a logistics company with built in freight exchange.
+This is an app for a logistics company with built in freight exchange. (including tests for both SSR and API endpoints)
 
 Stack used:
  - python
