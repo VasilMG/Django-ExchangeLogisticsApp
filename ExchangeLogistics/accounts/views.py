@@ -15,7 +15,7 @@ UserModel = get_user_model()
 
 
 class CreateCustomUserView(generic.CreateView):
-    template_name = 'accounts/sign_up_username.html'
+    template_name = 'accounts/sign-up.html'
     form_class = CreateCompanyAccountForm
     success_url = reverse_lazy('create_main_profile')
 
@@ -33,7 +33,7 @@ class CreateCustomUserView(generic.CreateView):
         context = {
             'form': form,
         }
-        return render(self.request, 'accounts/sign_up_username.html', context)
+        return render(self.request, 'accounts/sign-up.html', context)
 
 
 class UpdateCompanyProfileView(LoginRequiredMixin, generic.UpdateView):
@@ -72,11 +72,11 @@ def login_view(request):
                 "invalid_login"] = 'Please enter a correct username and password. ' \
                                    'Note that both fields may be case-sensitive.'
             error_message = form.error_messages["invalid_login"]
-            return render(request, 'accounts/sign_in.html', {'form': form, 'message': error_message, }, status=404)
+            return render(request, 'accounts/sign-in.html', {'form': form, 'message': error_message, }, status=404)
     context = {
         'form': form,
     }
-    return render(request, 'accounts/sign_in.html', context)
+    return render(request, 'accounts/sign-in.html', context)
 
 
 def logout_view(request):

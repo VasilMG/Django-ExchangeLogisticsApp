@@ -1,19 +1,24 @@
 from rest_framework import serializers
 
-from ExchangeLogistics.common.models import ServicesData, AboutData
+from ExchangeLogistics.common.models import PrimaryService, SecondaryService, Location, AboutData
 
 
-class IndexDataSerializer(serializers.ModelSerializer):
+class PrimaryServiceSerializer(serializers.ModelSerializer):
     class Meta:
-        model = ServicesData
-        fields = ['service_type', 'short_text']
+        model = PrimaryService
+        fields = '__all__'
 
-
-class ServicesDataSerializer(serializers.ModelSerializer):
+class SecondaryServiceSerializer(serializers.ModelSerializer):
     class Meta:
-        model = ServicesData
-        exclude = ['short_text']
+        model = SecondaryService
+        fields = '__all__'
 
+
+
+class LocationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Location
+        fields = '__all__'
 
 class AboutDataSerializer(serializers.ModelSerializer):
     class Meta:

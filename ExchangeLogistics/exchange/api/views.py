@@ -4,8 +4,8 @@ from rest_framework import generics as rest_views, status
 from rest_framework.response import Response
 
 from ExchangeLogistics.exchange.api.serializers import UserProfileDetailsApiSerializer, CreateOfferSerializer, \
-    CompleteOfferDetailsSerializer, ShortOfferSerializer, SupportSerializer
-from ExchangeLogistics.exchange.models import Offer, Support
+    CompleteOfferDetailsSerializer, ShortOfferSerializer
+from ExchangeLogistics.exchange.models import Offer
 
 UserModel = get_user_model()
 
@@ -60,8 +60,3 @@ class DeleteOfferApiView(LoginRequiredMixin, rest_views.RetrieveDestroyAPIView):
 class ListOffersApiView(LoginRequiredMixin, rest_views.ListAPIView):
     serializer_class = ShortOfferSerializer
     queryset = Offer.objects.all().order_by('-created_on')
-
-
-class SupportDetailsApiView(LoginRequiredMixin, rest_views.ListAPIView):
-    serializer_class = SupportSerializer
-    queryset = Support.objects.all()

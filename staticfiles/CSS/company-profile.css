@@ -1,0 +1,64 @@
+.d-block {
+    border-radius: 50em;
+}
+
+div.container {
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0, 0.6); /* Black w/opacity/see-through */
+    font-weight: bold;
+    color: white;
+    border-radius: 1em;
+    /*background-image: url("https://www.shutterstock.com/image-photo/shipping-delivery-car-ship-plane-260nw-682767424.jpg");*/
+    /*background-size: cover;*/
+    /*background-repeat: no-repeat;*/
+}
+
+.upper {
+    padding: 2em;
+    background-image: url("../images/companie-profile1024x520.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+p.lead {
+    color: white;
+    /*font-weight: bold;*/
+    display: flex;
+    justify-content: space-between;
+}
+
+.section-offers {
+    text-align: center;
+}
+
+.no-offers {
+    text-align: center;
+}
+.del-button {
+    width: 6em;
+    height: 3em;
+    border-radius: 0.5em;
+    background: red;
+}
+
+.del-button:hover {
+    background: #6b2b2b;
+    color: white;
+}
+
+.edit-button {
+    width: 6em;
+    height: 3em;
+    border-radius: 0.5em;
+    background: green;
+}
+.edit-button:hover {
+    background: #0fa90f;
+    color: white;
+}
+
+div.confirm-delete {
+    font-weight: bold;
+    color: red;
+    font-size: 2em;
+}

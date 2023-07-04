@@ -5,7 +5,7 @@ from ExchangeLogistics.accounts.api.validators import name_validator
 from ExchangeLogistics.accounts.models import CompanyProfile
 from ExchangeLogistics.exchange.api.api_validators import api_date_validator, \
     api_validate_load_size, api_validate_load_weight
-from ExchangeLogistics.exchange.models import Offer, Support
+from ExchangeLogistics.exchange.models import Offer
 
 UserModel = get_user_model()
 
@@ -86,8 +86,4 @@ class CompleteOfferDetailsSerializer(serializers.ModelSerializer):
         model = Offer
         fields = '__all__'
 
-class SupportSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Support
-        fields = '__all__'
 

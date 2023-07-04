@@ -3,15 +3,25 @@
 {% block page_content %}
 
 
-    <div class="container col-xxl-8 px-4 py-5">
-        <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+    <div class="support">
+        {% if not support %}
+            <div class="support-card">
 
-            <h1 class="display-5 fw-bold lh-1 mb-3">Support</h1>
-            <h4> Our support team is available 24 hours, 7 days a week!</h4>
-            <p class="lead">Email: support@elogistics.com</p>
-            <p class="lead">Phone number: +359 999 999 100</p>
+                <h1 class="header-support">Support</h1>
+                <h4> Our support team is available 24 hours, 7 days a week!</h4>
+                <p class="support-detail">Email: support@elogistics.com</p>
+                <p class="support-detail">Phone number: +359 999 999 100</p>
 
-        </div>
+            </div>
+        {% else %}
+            <div class="support-card">
+
+                <h1 class="header-support">Support</h1>
+                <h4>{{ support.short_text }}</h4>
+                <p class="support-detail">Email: {{ support.support_email }}</p>
+                <p class="support-detail">Phone number: {{ support.phone_number }}</p>
+            </div>
+        {% endif %}
     </div>
 
 {% endblock %}

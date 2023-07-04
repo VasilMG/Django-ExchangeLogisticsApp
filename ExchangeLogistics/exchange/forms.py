@@ -12,14 +12,14 @@ class DatePicker(forms.DateInput):
 class CreateOfferForm(forms.ModelForm):
     class Meta:
         model = Offer
-        fields = ['loading_date', 'loading_country', 'loading_place',
+        fields = ['offer_type', 'loading_date', 'loading_country', 'loading_place',
                   'unloading_date', 'unloading_country', 'unloading_place',
-                  'load_size', 'weight', 'offer_type', 'comment']
+                  'load_size', 'weight','price', 'comment']
         exclude = ['created_on', 'company']
         widgets = {
             'loading_date': DatePicker,
             'unloading_date': DatePicker,
-            'comment': forms.TextInput,
+            'comment': forms.Textarea,
         }
 
     def clean_loading_date(self):
@@ -71,4 +71,10 @@ class CreateOfferForm(forms.ModelForm):
         value = self.cleaned_data.get('unloading_country')
         if any(char.isdigit() for char in value):
             raise forms.ValidationError("Unloading country cannot contain digits.")
+        return value
+
+    def clean_price(self):
+        value = self.cleaned_data.get('price')
+        if value and value < 0:
+            raise forms.ValidationError("Price cannot be less than zero.")
         return value

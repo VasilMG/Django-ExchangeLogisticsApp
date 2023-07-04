@@ -8,6 +8,7 @@ from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 
 from ExchangeLogistics.accounts.managers import AppUSerManager
+from ExchangeLogistics.exchange.validators import name_validator
 
 
 class CustomUser(AbstractBaseUser, PermissionsMixin):
@@ -46,10 +47,10 @@ class CompanyProfile(models.Model):
         on_delete=models.CASCADE,
     )
     company_name = models.CharField(max_length=100)
-    country = models.CharField(max_length=50)
-    city = models.CharField(max_length=50)
+    country = models.CharField(max_length=50, validators=(name_validator,),)
+    city = models.CharField(max_length=50, validators=(name_validator,),)
     address = models.CharField(max_length=300)
-    contact_person = models.CharField(max_length=100)
+    contact_person = models.CharField(max_length=100, validators=(name_validator,),)
     company_email = models.CharField(
         max_length=100,
         blank=False,

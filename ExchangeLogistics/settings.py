@@ -67,6 +67,17 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'ExchangeLogistics.wsgi.application'
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'db_name',
+#         'USER': 'your_postgres_user',
+#         'PASSWORD': 'your_postgres_password',
+#         'HOST': '127.0.0.1 or localhost',
+#         'PORT': '5432',
+#     }
+# }
+
 
 DATABASES = {
     'default': {

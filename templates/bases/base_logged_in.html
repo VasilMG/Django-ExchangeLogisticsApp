@@ -19,9 +19,11 @@
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/carousel/">
 
 
-    <link href="{% static 'carousel.css' %}" rel="stylesheet">
+    <link href="{% static 'CSS/carousel.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'CSS/company-profile.css' %}">
+    <link rel="stylesheet" href="{% static 'CSS/order-list.css' %}">
+    <link rel="stylesheet" href="{% static 'CSS/support.css' %}">
 
-    <link href="{% static 'styles_all.css' %}" rel="stylesheet">
 </head>
 <body>
 
@@ -48,11 +50,14 @@
                         <a class="nav-link active" href="{% url 'support' %}">Support</a>
                     </li>
                 </ul>
-                {#                {% if user.is_authenticated %}#}
-                {#                    <div style="color: whitesmoke; padding-right: 10px">#}
-                {#                    Hello {{ user }}!#}
-                {#                    </div>#}
-                {#                {% endif %}#}
+                {% if user.is_staff %}
+                    <div style="color: whitesmoke; padding-right: 10px">
+                        <a href="{% url 'settings' %}">
+                        <button type="button" class="btn btn-warning">Settings</button>
+                        </a>
+                    </div>
+                {% endif %}
+
                 <div class="text-end">
                     <a href="{% url 'logout' %}">
                         <button type="button" class="btn btn-warning">Log Out</button>
@@ -66,6 +71,9 @@
 {% block page_content %}
 {% endblock %}
 
-<footer class="container">
-    <p>&copy; 2023 Company, Inc.</p>
+
+<footer class="container" style="text-align: center; padding-top: 3em">
+
+    <p>&copy; 2023 Exchange Logistics, Inc. &middot; </p>
 </footer>
+</body>

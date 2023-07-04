@@ -18,10 +18,11 @@
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/carousel/">
 
+    <link href="{% static 'CSS/carousel.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'CSS/network.css' %}">
+    <link rel="stylesheet" href="{% static 'CSS/services.css' %}">
 
-    <link href="{% static 'carousel.css' %}" rel="stylesheet">
 
-    <link href="{% static 'styles_all.css' %}" rel="stylesheet">
 </head>
 <body>
 
@@ -39,36 +40,45 @@
                         <a class="nav-link active" href="{% url 'services_main' %}">Services</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active"  href="{% url 'network' %}">Network</a>
+                        <a class="nav-link active" href="{% url 'network' %}">Network</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active"  href="{% url 'about' %}">About</a>
+                        <a class="nav-link active" href="{% url 'about' %}">About</a>
                     </li>
                     {% if user.is_authenticated %}
                         <li class="nav-item">
-                        <a class="nav-link active"  href="{% url 'profile_details_company' pk=user.pk %}">Exchange</a>
-                    </li>
-                        {% else %}
+                            <a class="nav-link active"
+                               href="{% url 'profile_details_company' pk=user.pk %}">Exchange</a>
+                        </li>
+                    {% else %}
                         <li class="nav-item">
-                        <a class="nav-link disabled"  href="#">Exchange</a>
-                    </li>
+                            <a class="nav-link disabled" href="#">Exchange</a>
+                        </li>
                     {% endif %}
                 </ul>
+                {% if user.is_staff %}
+                    <div style="color: whitesmoke; padding-right: 10px">
+                        <a href="{% url 'settings' %}">
+                        <button type="button" class="btn btn-warning">Settings</button>
+                        </a>
+                    </div>
+                {% endif %}
+
                 {% if not user.is_authenticated %}
-                <div class="text-end">
-                    <a href="{% url 'sign_in' %}">
-                        <button type="button" class="btn btn-outline-light me-2">Login</button>
-                    </a>
-                    <a href="{% url 'register' %}">
-                        <button type="button" class="btn btn-warning">Sign-up</button>
-                    </a>
-                </div>
-                    {% else %}
-                     <div class="text-end">
-                    <a href="{% url 'logout' %}">
-                        <button type="button" class="btn btn-warning">Log Out</button>
-                    </a>
-                </div>
+                    <div class="text-end" style="display: flex">
+                        <a href="{% url 'sign_in' %}">
+                            <button type="button" class="btn btn-outline-light me-2">Login</button>
+                        </a>
+                        <a href="{% url 'register' %}">
+                            <button type="button" class="btn btn-warning">Sign-up</button>
+                        </a>
+                    </div>
+                {% else %}
+                    <div class="text-end">
+                        <a href="{% url 'logout' %}">
+                            <button id="sing-in" type="button" class="btn btn-warning">Log Out</button>
+                        </a>
+                    </div>
                 {% endif %}
             </div>
         </div>
@@ -78,7 +88,10 @@
 {% block page_content %}
 {% endblock %}
 
-<footer class="container">
+
+<footer class="container" style="text-align: center; padding-top: 3em">
 
     <p>&copy; 2023 Exchange Logistics, Inc. &middot; </p>
 </footer>
+
+</body>

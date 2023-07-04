@@ -9,8 +9,9 @@ from django.db.models import Q
 
 from ExchangeLogistics.accounts.forms import CreateCompanyProfileForm
 from ExchangeLogistics.accounts.models import CompanyProfile
+from ExchangeLogistics.common.models import AboutData
 from ExchangeLogistics.exchange.forms import CreateOfferForm
-from ExchangeLogistics.exchange.models import Offer, Support
+from ExchangeLogistics.exchange.models import Offer
 
 UserModel = get_user_model()
 
@@ -89,7 +90,7 @@ class ListOffers(LoginRequiredMixin, generic.ListView):
 class EditOffer(LoginRequiredMixin, generic.UpdateView):
     model = Offer
     form_class = CreateOfferForm
-    template_name = 'exchange/edit_offer.html'
+    template_name = 'exchange/edit-offer.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -151,6 +152,6 @@ def delete_offer(request, pk):
 
 def support(request):
     context = {
-        # 'support': Support.objects.get(pk=1)
+        'support': AboutData.objects.first(),
     }
     return render(request, 'exchange/support.html', context)

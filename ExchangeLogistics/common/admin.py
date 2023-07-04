@@ -1,13 +1,17 @@
 from django.contrib import admin
 
-from ExchangeLogistics.common.models import ServicesData, NetworkData, AboutData
+from ExchangeLogistics.common.models import PrimaryService, SecondaryService,  Location, AboutData
 
 
-@admin.register(ServicesData)
+@admin.register(PrimaryService)
 class ServicesDataAdmin(admin.ModelAdmin):
     list_display = ['service_type']
 
-@admin.register(NetworkData)
+@admin.register(SecondaryService)
+class ServicesDataAdmin(admin.ModelAdmin):
+    list_display = ['service_type']
+
+@admin.register(Location)
 class NetworkDataAdmin(admin.ModelAdmin):
     list_display = ['country']
 
@@ -15,4 +19,3 @@ class NetworkDataAdmin(admin.ModelAdmin):
 @admin.register(AboutData)
 class AboutDataAdmin(admin.ModelAdmin):
     pass
-

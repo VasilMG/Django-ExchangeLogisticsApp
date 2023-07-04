@@ -19,11 +19,12 @@
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/carousel/">
 
 
-    <link href="{% static 'carousel.css' %}" rel="stylesheet">
+    <link href="{% static 'CSS/carousel.css' %}" rel="stylesheet">
 
-    <link href="{% static 'styles_all.css' %}" rel="stylesheet">
+    <link href="{% static 'CSS/styles_all.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'CSS/sign-profile.css' %}">
 </head>
-<body>
+<body class="sign-profile-body">
 
 <header>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
@@ -50,7 +51,7 @@
                 </ul>
 
                 {% if not user.is_authenticated %}
-                <div class="text-end">
+                <div class="text-end" style="display: flex">
                     <a href="{% url 'sign_in' %}">
                         <button type="button" class="btn btn-outline-light me-2">Login</button>
                     </a>
@@ -71,20 +72,18 @@
 </header>
 
 
-    <article class="my-3" id="validation"style="padding: 10px">
+    <div class="sign-profile-content" >
 
-    <h3 style="padding: 10px">Please enter you contact data</h3>
+    <h3 class="h3-profile-form" style="padding: 10px">Please enter you contact data</h3>
 
-      <div>
-        <div class="bd-example-snippet bd-code-snippet">
-            <div class="bd-example">
-        <form class="row g-3" action="{% url 'create_main_profile' pk=user.pk %}" method="post" enctype="multipart/form-data">
+        <form class="profile-form" action="{% url 'create_main_profile' pk=user.pk %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {% for item in form %}
-          <div class="col-md-4">{{ item.label_tag}}
-            {{ item }}
+          <div class="item-form">
+              <div class="l-tag">{{ item.label_tag}}</div>
+            <div class="input-item">{{ item }}</div>
           {% if item.errors %}
-          <p> {{ item.errors }}</p>
+          <p class="error">{{ item.errors }}</p>
           {% endif %}
           </div>
             {% endfor %}
@@ -99,11 +98,10 @@
 
         </form>
         </div>
-           </div>
 
-      </div>
-    </article>
-<footer class="container">
+
+<footer class="footer-profile">
 
     <p>&copy; 2023 Exchange Logistics, Inc. &middot; </p>
 </footer>
+</body>

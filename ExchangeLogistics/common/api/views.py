@@ -1,16 +1,21 @@
 from rest_framework import generics as rest_views
 
-from ExchangeLogistics.common.api.serializers import IndexDataSerializer, ServicesDataSerializer, AboutDataSerializer
-from ExchangeLogistics.common.models import ServicesData, AboutData
+from ExchangeLogistics.common.api.serializers import PrimaryServiceSerializer, SecondaryServiceSerializer,\
+    LocationSerializer, AboutDataSerializer
+from ExchangeLogistics.common.models import PrimaryService, SecondaryService, Location, AboutData
 
 
-class IndexApiView(rest_views.ListAPIView):
-    queryset = ServicesData.objects.all()
-    serializer_class = IndexDataSerializer
+class IndexPrimaryServicesApiView(rest_views.ListAPIView):
+    queryset = PrimaryService.objects.all()
+    serializer_class = PrimaryServiceSerializer
 
-class ServicesApiView(rest_views.ListAPIView):
-    queryset = ServicesData.objects.all()
-    serializer_class = ServicesDataSerializer
+class IndexSecondaryServicesApiView(rest_views.ListAPIView):
+    queryset = SecondaryService.objects.all()
+    serializer_class = SecondaryServiceSerializer
+
+class LocationsApiView(rest_views.ListAPIView):
+    queryset = Location.objects.all()
+    serializer_class = LocationSerializer
 
 class AboutDataApiView(rest_views.ListAPIView):
     queryset = AboutData.objects.all()
