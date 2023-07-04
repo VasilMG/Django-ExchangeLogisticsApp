@@ -37,36 +37,36 @@ Stack used:
  1. Clone the repository
 
  2. Open it with your preferred IDE and create a virtual environment
- --- Windows:
- - Create:
- - python -m venv ./<virtual environment name you want>
- - example: python -m venv ./venv
 
- - Activate:
- - <virtual environment name>/Scripts/activate
- - example: venv/Scripts/activate
-
- --- Linux:
- - Create:
- - python3 -m venv ./<virtual environment name you want>
- - example: python3 -m venv ./venv
-
- - Activate:
- - source ./<virtual environment name>/bin/activate
- - example:  source ./venv/bin/activate
-
+   2.1 Windows:
  
- 3. Install all dependencies
+    Create virtual environment:
+    - python -m venv ./venv
+
+    Activate the environment:
+     - venv/Scripts/activate
+
+  2.2 Linux:
+ 
+    Create virtual environment:
+    - python3 -m venv ./venv
+
+    Activate the environment:
+    - source ./venv/bin/activate 
+   <br/>
+   <br/>
+
+3. Install all dependencies
   - pip install -r requirements.txt
   
- 4. Make the migrations
+4. Make the migrations
   - python manage.py makemigrations
   - python manage.py migrate
  
- 5. Run the project
+5. Run the project
  - python manage.py runserver
  
- 6. Finally open the project in your browser - http://127.0.0.1:8000/ or http://localhost:8000/
+6. Finally open the project in your browser - http://127.0.0.1:8000/ or http://localhost:8000/
  
  - The services and network data is based on models. These models are registered in the admin view.
  - If you wish, you can create a superuser with the command  -> python manage.py createsuperuser
