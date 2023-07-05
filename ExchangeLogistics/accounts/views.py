@@ -6,6 +6,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, reverse, redirect
 from django.urls import reverse_lazy
 from django.views import generic
+from django.core.exceptions import ObjectDoesNotExist
 
 from ExchangeLogistics.accounts.forms import CreateCompanyAccountForm, CreateCompanyProfileForm
 from ExchangeLogistics.accounts.models import CompanyProfile
@@ -65,8 +66,15 @@ def login_view(request):
         form = AuthenticationForm(data=request.POST)
         if form.is_valid():
             user = form.get_user()
+            if user.is_superuser or user.is_staff:
+                try:
+                    the_profile = CompanyProfile.objects.get(user=user)
+                except ObjectDoesNotExist:
+                    the_profile = CompanyProfile.objects.create(user=user,)
+            else:
+                the_profile = CompanyProfile.objects.get(user=user)
             login(request, user)
-            return HttpResponseRedirect(reverse('profile_details_company', kwargs={'pk': user.pk}))
+            return HttpResponseRedirect(reverse('profile_details_company', kwargs={'pk': the_profile.pk}))
         else:
             form.error_messages[
                 "invalid_login"] = 'Please enter a correct username and password. ' \
