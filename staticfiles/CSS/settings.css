@@ -31,9 +31,6 @@
     font-weight: bold;
 }
 
-/*.settings-card:hover {*/
-/*    background: rgba(0,0,0, 0.1);*/
-/*}*/
 
 .settings-item {
     color: white;
@@ -61,7 +58,6 @@
 .primary-form {
     color: white;
     margin: 0 auto;
-    /*width: 900px;*/
     padding: 1em 1em;
     border: 1px solid #000;
     border-radius: 0.5em;
