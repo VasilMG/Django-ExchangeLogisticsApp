@@ -87,8 +87,8 @@
     </div>
 
     <div class="detail">Company:
-        <a href="{% url 'profile_details_company' pk=company.pk %}">
-            <div class="company">{{ company.company_name }}</div>
+        <a class="company" href="{% url 'profile_details_company' pk=company.pk %}">
+            <div>{{ company.company_name }}</div>
         </a>
     </div>
     <div class="detail"> Contact person: <span>{{ company.contact_person }}</span></div>
