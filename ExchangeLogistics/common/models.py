@@ -91,7 +91,7 @@ class AboutData(models.Model):
     history = models.TextField(verbose_name='History',)
     exchange_introduction = models.TextField(verbose_name='Exchange intro',)
 
-    support_text = models.TextField()
+    support_text = models.TextField(blank=True, null=True)
     support_email = models.EmailField(
         validators=[EmailValidator, ]
     )
@@ -105,8 +105,3 @@ class AboutData(models.Model):
             value = getattr(self, field_name.attname, None)
             yield field_name.verbose_name, value
 
-    # def clean(self):
-    #     main_services= len(AboutData.objects.all())
-    #     if main_services == 1:
-    #         raise ValidationError("There must be maximum 1 instance of this model")
-    #     return True
