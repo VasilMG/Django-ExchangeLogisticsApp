@@ -28,7 +28,7 @@ Stack used:
  I. Using Docker image:
  
  1. Run the docker image with the following command:
- - docker run --name <desired_name>  -d -p 8000:8000 vasilmg/logistics-app:latest
+ - docker run --name logistics-app  -d -p 8000:8000 vasilmg/logistics-app:latest
  
  2. Open your browser and type - http://127.0.0.1:8000/ or http://localhost:8000/
  
