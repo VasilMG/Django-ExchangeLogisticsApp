@@ -41,3 +41,11 @@
     gap: 1em;
 }
 
+.company {
+    color: greenyellow;
+}
+
+.company:hover {
+    color: white;
+}
+
