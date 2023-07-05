@@ -36,6 +36,10 @@
     padding: 0.5em;
 }
 
+.span-comment {
+    word-wrap: break-word;
+}
+
 .buttons-offer {
     display: flex;
     gap: 1em;

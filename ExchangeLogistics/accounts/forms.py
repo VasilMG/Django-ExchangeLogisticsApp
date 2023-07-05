@@ -45,13 +45,13 @@ class CreateCompanyProfileForm(forms.ModelForm):
 
     def clean_city(self):
         value = self.cleaned_data.get('city')
-        if not value.isalpha():
+        if any(char.isdigit() for char in value):
             raise forms.ValidationError("City cannot contain digits.")
         return value
 
     def clean_country(self):
         value = self.cleaned_data.get('country')
-        if not value.isalpha():
+        if any(char.isdigit() for char in value):
             raise forms.ValidationError('Country cannot contain digits.')
         return value
 
