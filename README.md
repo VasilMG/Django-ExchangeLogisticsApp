@@ -70,9 +70,9 @@ Stack used:
  
 6. Finally open the project in your browser - http://127.0.0.1:8000/ or http://localhost:8000/
  
- - The services and network data is based on models. These models are registered in the admin view.
+
  - If you wish, you can create a superuser with the command  -> python manage.py createsuperuser
- - After that through the admin page (http://127.0.0.1:8000/admin/) you can add some users or data to the models registered there.
+ - After that through the admin page (http://127.0.0.1:8000/admin/) you can create a staff user/group so that you can access the 'Settings' feature.
 
  
  I have used PostgresSQL but I have left both Postgres and SQLite settings in the settings.py file. So feel free to use the DB you prefer.
