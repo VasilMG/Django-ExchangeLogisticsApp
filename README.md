@@ -12,11 +12,13 @@ Stack used:
  
  
  
- In this app we have three common templates where the information for the logistics company is displayed.
+ In this app we have an initial part where the information about the logistics company is displayed - Services offered, Locations, About.
  I have put some exemplary text in the templates in order for the app to start without creating models.
- There are four models for the basic data regarding the company. These models can be created, edited and deleted by a superuser or a user with staff permissions.
- Using the admin page we can create a user with staff permissions or grant such permissions to an existing user.
- When staff user logs in - a special settings button is display and the user can create, update, delete the models for the front page and the company data.
+ There are four models for the basic data regarding the company which are displayed in the initial part of the app.
+ As soon as a model is created the examplary text and images disappear and the created model's data is displayed on the page.
+ Only users with staff privileges have permisions to access the 'Settings' feature which allows them to make CRUD opeations to these models.
+ Using the admin page we can create a staff group and user with staff permissions or grant such permissions to an existing user.
+ When a staff user logs in, a button "Settings" is displayed on the main navigation. Using this button the user can access the 'Settings' feature.
  
  The second feature of the app is a freight exchange where registered users can publish their loads or free trucks.
  A user can sign up with username and password. After that a blank profile is created and the user should fill the neccessary data for his profile.
