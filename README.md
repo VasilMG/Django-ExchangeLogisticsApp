@@ -1,5 +1,5 @@
 # ExchangeLogisticsApp
-This is an app for a logistics company with built in freight exchange. (including tests for both SSR and API endpoints)
+This is an app for a logistics company with built in freight exchange.
 
 Stack used:
  - python
@@ -7,7 +7,7 @@ Stack used:
  - django rest framework
  - bootstrap
  
- This project has both - server side rendering and APIs.
+ This project has both - server side rendering and APIs. (includes tests for all functionalities)
  All endpoints are visible in the swagger url -- - http://127.0.0.1:8000/swagger-ui/
  
  
