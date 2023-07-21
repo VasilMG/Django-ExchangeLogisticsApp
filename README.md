@@ -7,7 +7,7 @@ Stack used:
  - django rest framework
  - bootstrap
  
- This project has both - server side rendering and APIs. (includes tests for all functionalities)
+ This project has both - server side rendering and APIs. (includes tests for all functionalities) </br>
  All endpoints are visible in the swagger url -- - http://127.0.0.1:8000/swagger-ui/
  
  
