@@ -1,5 +1,7 @@
 # ExchangeLogisticsApp
-This is an app for a logistics company with built in freight exchange.
+This is an app for a logistics company with built in freight exchange.</br></br>
+You can check out the app one Azure at - https://vasil-elogistics.azurewebsites.net</br>
+It is a free app service and the app is unloaded when it is inactive for a long period of time. It reloads when a request is made to the url and it may take up to 10 seconds to load the frist time.
 
 Stack used:
  - python
@@ -68,11 +70,11 @@ Stack used:
 5. Run the project
  - python manage.py runserver
  
-6. Finally open the project in your browser - http://127.0.0.1:8000/ or http://localhost:8000/
+6. Finally open the project in your browser - http://localhost:8000/
  
 
  - If you wish, you can create a superuser with the command  -> python manage.py createsuperuser
- - After that through the admin page (http://127.0.0.1:8000/admin/) you can create a staff user/group so that you can access the 'Settings' feature.
+ - After that through the admin page (http://localhost:8000/admin/) you can create a staff user/group so that you can access the 'Settings' feature.
 
  
  I have used PostgresSQL but I have left both Postgres and SQLite settings in the settings.py file. So feel free to use the DB you prefer.
