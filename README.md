@@ -10,7 +10,7 @@ Stack used:
  - bootstrap
  
  This project has both - server side rendering and APIs. (includes tests for all functionalities) </br>
- All endpoints are visible in the swagger url -- - http://localhost:8000/swagger-ui/
+ All endpoints are visible in the swagger url -- - http://localhost:8000/swagger-ui/</br>or https://vasil-elogistics.azurewebsites.net/swagger-ui/  - if you've opened it on Azure.
  
  
  
@@ -70,7 +70,7 @@ Stack used:
 5. Run the project
  - python manage.py runserver
  
-6. Finally open the project in your browser - http://localhost:8000/
+6. Finally open the project in your browser - http://localhost:8000/ or http://127.0.0.1:8000/
  
 
  - If you wish, you can create a superuser with the command  -> python manage.py createsuperuser
