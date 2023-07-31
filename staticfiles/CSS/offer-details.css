@@ -4,7 +4,7 @@
     justify-content: center;
     align-items: center;
     padding: 2em;
-    width: 600px;
+    width: 60%;
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0, 0.6); /* Black w/opacity/see-through */
     font-weight: bold;
@@ -19,8 +19,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
+    background-position: center;
 }
 .detail {
     width: 100%;
@@ -53,3 +54,22 @@
     color: white;
 }
 
+body > div:nth-child(3) {
+    width: 100%;
+}
+
+.buttons-offer > a {
+    text-decoration: none;
+}
+
+
+@media (width < 600px) {
+    .offer-details {
+        width: 95%;
+    }
+    .published {
+        display: flex;
+        flex-direction: column;
+    }
+
+}

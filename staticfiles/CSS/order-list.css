@@ -16,3 +16,17 @@
 .table-offers {
     padding: 0 1em;
 }
+
+form.d-flex {
+    width: 50%;
+}
+
+.offers-content {
+    height: 80vh;
+}
+
+@media (width <= 600px) {
+    form.d-flex {
+    width: 70%;
+}
+}

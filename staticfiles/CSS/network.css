@@ -3,6 +3,7 @@
     background-image: url("../images/background.jpg");
     background-size: cover;
     background-repeat: no-repeat;
+    background-position: center;
 }
 
 
@@ -22,7 +23,7 @@
     color: white;
     margin: 0 auto;
     text-align: center;
-    width: 900px;
+    width: 80%;
     padding: 1em 0;
     border: 1px solid #000;
     border-radius: 0.5em;

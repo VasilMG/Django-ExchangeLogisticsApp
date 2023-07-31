@@ -2,8 +2,9 @@
 {% load static %}
 
 {% block page_content %}
+    <div class="offers-content">
 
-    <div class="bd-example" style="padding: 20px">
+    <div class="bd-example" style="padding: 1em">
         <nav aria-label="Another pagination example">
             <ul class="pagination pagination-lg flex-wrap">
                 {% if not page_obj.has_previous %}
@@ -35,11 +36,14 @@
                 {% endif %}
             </ul>
             <div>
-                {% csrf_token %}
-                <form class="d-flex" role="search" style="width: 600px" action="{% url 'list_offers' pk=user.pk %}"
+
+                <p>Search by loading country or place</p>
+
+                <form class="d-flex" role="search" action="{% url 'list_offers' pk=user.pk %}"
                       method="get">
+                    {% csrf_token %}
                     <input name="pattern" class="form-control me-2" type="search"
-                           placeholder="Search by loading country or place" aria-label="Search" value="{{ pattern }}">
+                           placeholder="Search" aria-label="Search" value="{{ pattern }}">
                     <button class="btn btn-outline-light" type="submit"
                             style="background-color: dodgerblue; color: white">Search
                     </button>
@@ -115,5 +119,7 @@
                 </tbody>
             </table>
         </div>
+    </div>
+
     </div>
 {% endblock %}

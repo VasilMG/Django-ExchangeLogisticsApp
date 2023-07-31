@@ -2,7 +2,10 @@
     border-radius: 50em;
 }
 
-div.container {
+/*div.container*/
+/*.col-xxl-8*/
+
+.col-xxl-8 {
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0, 0.6); /* Black w/opacity/see-through */
     font-weight: bold;
@@ -58,4 +61,37 @@ div.confirm-delete {
     font-weight: bold;
     color: red;
     font-size: 2em;
+}
+
+@media (width <= 600px){
+    .table {
+        font-size: 0.7em;
+    }
+    div.col-lg-6:nth-child(2) {
+        text-align: right;
+    }
+    .d-grid{
+        justify-content: flex-start;
+    }
+}
+
+@media (width <= 500px){
+    .table {
+        font-size: 0.7em;
+    }
+    div.col-lg-6:nth-child(2) {
+        text-align: left;
+    }
+    .d-grid{
+        justify-content: flex-start;
+    }
+    p.lead{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .bd-example {
+        overflow: auto;
+    }
+
 }

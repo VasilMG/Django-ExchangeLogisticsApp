@@ -20,14 +20,14 @@
 
                         <h3> Hello, {{ user.username }}!</h3>
                         <hr>
-                        <p class="lead"> Company: <span style="padding-left: 3em">{{ object.company_name }}</span></p>
+                        <p class="lead"> Company: <span style="padding-left: 0.5em">{{ object.company_name }}</span></p>
                     {% else %}
                         <h1 class="display-5 fw-bold lh-1 mb-3" style="color: white">{{ object.company_name }}</h1>
                     {% endif %}
-                    <p class="lead">Address:<span>{{ object.address }}, {{ object.country }}</span></p>
-                    <p class="lead">Contact person: <span>{{ object.contact_person }}</span></p>
-                    <p class="lead">Email: <span>{{ object.company_email }}</span></p>
-                    <p class="lead">Phone number: <span>{{ object.phone_number }}</span></p>
+                    <p class="lead">Address:<span style="padding-left: 0.5em">{{ object.address }}, {{ object.country }}</span></p>
+                    <p class="lead">Contact person: <span style="padding-left: 0.5em">{{ object.contact_person }}</span></p>
+                    <p class="lead">Email: <span style="padding-left: 0.5em">{{ object.company_email }}</span></p>
+                    <p class="lead">Phone number: <span style="padding-left: 0.5em">{{ object.phone_number }}</span></p>
                     {% if object.pk == user.pk %}
                         <div class="d-grid gap-2 d-md-flex justify-content-md-start">
                             <a href="{% url 'edit_profile' pk=object.pk %}">
@@ -127,12 +127,14 @@
                     </table>
                 </div>
             </div>
-            </div>
+
         {% else %}
             <div>
                 <h3 class="no-offers">You have no offers yet</h3>
             </div>
         {% endif %}
-
+    </div>
 
 {% endblock %}
+
+    

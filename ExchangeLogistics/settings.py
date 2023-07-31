@@ -44,6 +44,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'ExchangeLogistics.common.middleware.NoDjangoAdminForEndUserMiddleware',
 ]
 
 ROOT_URLCONF = 'ExchangeLogistics.urls'
