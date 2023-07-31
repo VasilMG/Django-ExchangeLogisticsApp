@@ -15,6 +15,6 @@ from django.core.wsgi import get_wsgi_application
 # on Azure App Service and should use the production settings in production.py.
 # settings_module = "ExchangeLogistics.production" if 'WEBSITE_HOSTNAME' in os.environ else 'ExchangeLogistics.settings'
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', "ExchangeLogistics.production")
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', "ExchangeLogistics.settings")
 
 application = get_wsgi_application()
