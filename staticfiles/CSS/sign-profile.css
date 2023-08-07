@@ -33,7 +33,7 @@
     font-weight: bold;
     color: white;
     gap: 1em;
-    width: 90%;
+    width: 50%;
 }
 
 .item-form {
@@ -57,4 +57,11 @@
 
 #logo-clear_id {
     width: fit-content;
+}
+
+@media (width  < 600px) {
+    .profile-form {
+        width: 90%;
+    }
+
 }
