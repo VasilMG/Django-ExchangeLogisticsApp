@@ -24,3 +24,4 @@ class CustomUserAdmin(UserAdmin):
 @admin.register(CompanyProfile)
 class CompanyProfileAdmin(admin.ModelAdmin):
     list_display = ['user' , 'company_name', 'country', 'company_email']
+    search_fields = ('company_name__startswith',)

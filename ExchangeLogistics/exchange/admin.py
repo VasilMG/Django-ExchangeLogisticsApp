@@ -5,7 +5,9 @@ from ExchangeLogistics.exchange.models import Offer
 
 @admin.register(Offer)
 class OfferAdmin(admin.ModelAdmin):
-    list_display = ['created_on', 'company']
+    list_display = ['created_on','loading_date', 'loading_country','unloading_date', 'unloading_country', 'company']
+    list_filter = ('company',)
+    list_per_page = 10
 
 # @admin.register(Support)
 # class SupportAdmin(admin.ModelAdmin):
