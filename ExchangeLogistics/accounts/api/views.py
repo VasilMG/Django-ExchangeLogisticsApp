@@ -37,7 +37,10 @@ class CreateUserApiView(rest_views.CreateAPIView):
         return Response('Created', status=status.HTTP_201_CREATED)
 
 
-class UpadateUserProfileApiView(rest_views.RetrieveUpdateAPIView):
+
+
+
+class UpdateUserProfileApiView(rest_views.RetrieveUpdateAPIView):
     serializer_class = UpdateUserProfileSerializer
     queryset = CompanyProfile.objects.all()
 
