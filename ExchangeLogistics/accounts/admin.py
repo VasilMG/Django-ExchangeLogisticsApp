@@ -18,7 +18,7 @@ class CustomUserAdmin(UserAdmin):
     )
     fieldsets = (
         (None, {'fields': ('username', 'password')}),
-        ('Permissions', {'fields': ('is_staff',)}),
+        ('Permissions', {'fields': ('is_staff', 'groups')}),
     )
 
 @admin.register(CompanyProfile)

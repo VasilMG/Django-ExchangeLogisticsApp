@@ -44,12 +44,12 @@ def about(request):
     return render(request, 'common/about.html', context)
 
 @login_required(login_url='sign_in')
-@user_passes_test(lambda u: u.is_staff or u.is_superuser)
+@user_passes_test(lambda u: u.is_staff or u.groups.filter(name="Company_Users").exists())
 def settings_view(request):
     return render(request, 'common/settings.html')
 
 @login_required(login_url='sign_in')
-@user_passes_test(lambda u: u.is_staff or u.is_superuser)
+@user_passes_test(lambda u: u.is_staff or u.groups.filter(name="Company_Users").exists())
 def primary_services_view(request):
     context = {
         'objects': PrimaryService.objects.all(),
@@ -57,7 +57,7 @@ def primary_services_view(request):
     return render(request, 'common/list-primary.html', context=context)
 
 @login_required(login_url='sign_in')
-@user_passes_test(lambda u: u.is_staff or u.is_superuser)
+@user_passes_test(lambda u: u.is_staff or u.groups.filter(name="Company_Users").exists())
 def create_primary_service_view(request):
     if request.method == 'GET':
         form = CreatePrimaryServiceModelForm()
@@ -69,7 +69,7 @@ def create_primary_service_view(request):
     return render(request, 'common/create-primary.html', context={'form': form,})
 
 @login_required(login_url='sign_in')
-@user_passes_test(lambda u: u.is_staff or u.is_superuser)
+@user_passes_test(lambda u: u.is_staff or u.groups.filter(name="Company_Users").exists())
 def edit_primary_view(request, pk):
     current_service = PrimaryService.objects.get(pk=pk)
     if request.method == 'GET':
@@ -82,14 +82,14 @@ def edit_primary_view(request, pk):
     return render(request, 'common/edit-primary.html', context={'form': form, 'service': current_service, })
 
 @login_required(login_url='sign_in')
-@user_passes_test(lambda u: u.is_staff or u.is_superuser)
+@user_passes_test(lambda u: u.is_staff or u.groups.filter(name="Company_Users").exists())
 def delete_primary_view(request, pk):
     current_model = PrimaryService.objects.get(pk=pk)
     current_model.delete()
     return redirect('primary_services')
 
 @login_required(login_url='sign_in')
-@user_passes_test(lambda u: u.is_staff or u.is_superuser)
+@user_passes_test(lambda u: u.is_staff or u.groups.filter(name="Company_Users").exists())
 def secondary_services_view(request):
     context = {
         'objects': SecondaryService.objects.all(),
@@ -98,7 +98,7 @@ def secondary_services_view(request):
 
 
 @login_required(login_url='sign_in')
-@user_passes_test(lambda u: u.is_staff or u.is_superuser)
+@user_passes_test(lambda u: u.is_staff or u.groups.filter(name="Company_Users").exists())
 def create_secondary_service_view(request):
     if request.method == 'GET':
         form = CreateEditSecondaryServiceModelForm()
@@ -111,7 +111,7 @@ def create_secondary_service_view(request):
 
 
 @login_required(login_url='sign_in')
-@user_passes_test(lambda u: u.is_staff or u.is_superuser)
+@user_passes_test(lambda u: u.is_staff or u.groups.filter(name="Company_Users").exists())
 def edit_secondary_view(request, pk):
     current_service = SecondaryService.objects.get(pk=pk)
     if request.method == 'GET':
@@ -125,7 +125,7 @@ def edit_secondary_view(request, pk):
 
 
 @login_required(login_url='sign_in')
-@user_passes_test(lambda u: u.is_staff or u.is_superuser)
+@user_passes_test(lambda u: u.is_staff or u.groups.filter(name="Company_Users").exists())
 def delete_secondary_view(request, pk):
     current_model = SecondaryService.objects.get(pk=pk)
     current_model.delete()
@@ -133,7 +133,7 @@ def delete_secondary_view(request, pk):
 
 
 @login_required(login_url='sign_in')
-@user_passes_test(lambda u: u.is_staff or u.is_superuser)
+@user_passes_test(lambda u: u.is_staff or u.groups.filter(name="Company_Users").exists())
 def locations_view(request):
     context = {
         'objects': Location.objects.all(),
@@ -142,7 +142,7 @@ def locations_view(request):
 
 
 @login_required(login_url='sign_in')
-@user_passes_test(lambda u: u.is_staff or u.is_superuser)
+@user_passes_test(lambda u: u.is_staff or u.groups.filter(name="Company_Users").exists())
 def create_location_view(request):
     if request.method == 'GET':
         form = CreateEditLocation()
@@ -155,7 +155,7 @@ def create_location_view(request):
 
 
 @login_required(login_url='sign_in')
-@user_passes_test(lambda u: u.is_staff or u.is_superuser)
+@user_passes_test(lambda u: u.is_staff or u.groups.filter(name="Company_Users").exists())
 def edit_location_view(request, pk):
     location = Location.objects.get(pk=pk)
     if request.method == 'GET':
@@ -169,14 +169,14 @@ def edit_location_view(request, pk):
 
 
 @login_required(login_url='sign_in')
-@user_passes_test(lambda u: u.is_staff or u.is_superuser)
+@user_passes_test(lambda u: u.is_staff or u.groups.filter(name="Company_Users").exists())
 def delete_location_view(request, pk):
     current_model = Location.objects.get(pk=pk)
     current_model.delete()
     return redirect('locations')
 
 @login_required(login_url='sign_in')
-@user_passes_test(lambda u: u.is_staff or u.is_superuser)
+@user_passes_test(lambda u: u.is_staff or u.groups.filter(name="Company_Users").exists())
 def about_data_view(request):
     context = {
         'objects': AboutData.objects.all(),
@@ -185,7 +185,7 @@ def about_data_view(request):
 
 
 @login_required(login_url='sign_in')
-@user_passes_test(lambda u: u.is_staff or u.is_superuser)
+@user_passes_test(lambda u: u.is_staff or u.groups.filter(name="Company_Users").exists())
 def create_about_view(request):
     if request.method == 'GET':
         form = CreateAboutData()
@@ -198,7 +198,7 @@ def create_about_view(request):
 
 
 @login_required(login_url='sign_in')
-@user_passes_test(lambda u: u.is_staff or u.is_superuser)
+@user_passes_test(lambda u: u.is_staff or u.groups.filter(name="Company_Users").exists())
 def edit_about_view(request, pk):
     about_data = AboutData.objects.get(pk=pk)
     if request.method == 'GET':
@@ -212,7 +212,7 @@ def edit_about_view(request, pk):
 
 
 @login_required(login_url='sign_in')
-@user_passes_test(lambda u: u.is_staff or u.is_superuser)
+@user_passes_test(lambda u: u.is_staff or u.groups.filter(name="Company_Users").exists())
 def delete_about_view(request, pk):
     current_model = AboutData.objects.get(pk=pk)
     current_model.delete()

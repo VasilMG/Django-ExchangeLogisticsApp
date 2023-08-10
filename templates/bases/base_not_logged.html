@@ -1,4 +1,5 @@
 {% load static %}
+{% load template_tag %}
 <!doctype html>
 <html lang="en">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -56,7 +57,7 @@
                         </li>
                     {% endif %}
                 </ul>
-                {% if user.is_staff %}
+                {% if user.is_staff or user|has_group:"Company_Users" %}
                     <div style="color: whitesmoke; padding-right: 10px">
                         <a href="{% url 'settings' %}">
                         <button type="button" class="btn btn-warning">Settings</button>
