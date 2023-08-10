@@ -14,6 +14,7 @@ UserModel = get_user_model()
 
 class TestCreateCompanyAccountForm(BaseTestCase):
 
+
     def test_create_blank_profile_when_user_form_valid_expect_created_profile(self):
         user = self.create_user()
 
@@ -36,7 +37,7 @@ class TestCreateCompanyProfileForm(BaseTestCase):
             'company_email': 'ivan@new.com',
             'phone_number': '+359888888888'
         }
-        self.client.post(reverse('create_main_profile', kwargs={'pk': 1}), data=entered_data2)
+        self.client.post(reverse('create_main_profile', kwargs={'pk': user.pk}), data=entered_data2)
 
         updated_profile = CompanyProfile.objects.get(**entered_data2)
         self.assertIsNotNone(updated_profile)
@@ -168,7 +169,7 @@ class TestCreateCustomUserView(TestCase):
         }
         response = self.client.post(reverse('register'), data=entered_data1)
 
-        redirect_url = f'/accounts/sign-up/1/create-profile/'
+        redirect_url = f'/accounts/sign-up/{UserModel.objects.last().id}/create-profile/'
         self.assertEqual(redirect_url, response.headers.get('Location'))
 
 
@@ -186,9 +187,9 @@ class TestUpdateCompanyProfileView(BaseTestCase):
             'company_email': 'ivan@new.com',
             'phone_number': '+359888888888'
         }
-        response = self.client.post(reverse('create_main_profile', kwargs={'pk': 1}), data=entered_data2)
+        response = self.client.post(reverse('create_main_profile', kwargs={'pk': user.pk}), data=entered_data2)
 
-        redirect_url = f'/exchange/1/profile/'
+        redirect_url = f'/exchange/{user.pk}/profile/'
 
         self.assertEqual(redirect_url, response.headers.get('Location'))
 
@@ -205,7 +206,7 @@ class TestLoginView(BaseTestCase):
 
         response = self.client.post(reverse('sign_in'), data=entered_data)
 
-        redirect_url = f'/exchange/1/profile/'
+        redirect_url = f'/exchange/{user.pk}/profile/'
         self.assertEqual(redirect_url, response.headers.get('Location'))
 
     def test_login_view_when_data_is_not_valid(self):

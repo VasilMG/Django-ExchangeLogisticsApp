@@ -40,9 +40,9 @@ class TestOfferForm(BaseTestCase):
             'comment': '22 pallets',
         }
 
-        response = self.client.post(reverse('create_offer', kwargs={'pk': 1}), data=entered_data)
+        response = self.client.post(reverse('create_offer', kwargs={'pk': user.pk}), data=entered_data)
+        self.assertTrue(len(Offer.objects.all()) > 0)
 
-        self.assertIsNotNone(Offer.objects.get(pk=1))
 
     def test_offer_form_when_loading_date_is_in_the_past_expect_error(self):
         yesterday = datetime.date.today() - datetime.timedelta(days=1)
@@ -220,8 +220,8 @@ class TestCreateOfferView(BaseTestCase):
             'comment': '22 pallets',
         }
 
-        response = self.client.post(reverse('create_offer', kwargs={'pk': 1}), data=entered_data)
-        redirect_url = f'/exchange/offers/1/offer-details/'
+        response = self.client.post(reverse('create_offer', kwargs={'pk': user.pk}), data=entered_data)
+        redirect_url = f'/exchange/offers/{Offer.objects.last().pk}/offer-details/'
         self.assertEqual(redirect_url, response.headers.get('Location'))
 
     def test_create_offer_view_when_data_is_not_valid_expect_reverse_status_404(self):
@@ -286,8 +286,8 @@ class TestEditOfferView(BaseTestCase):
             'comment': '22 pallets',
         }
 
-        response = self.client.post(reverse('edit_offer', kwargs={'pk': 1}), data=entered_data2)
-        redirect_url = f'/exchange/offers/1/offer-details/'
+        response = self.client.post(reverse('edit_offer', kwargs={'pk': Offer.objects.last().pk}), data=entered_data2)
+        redirect_url = f'/exchange/offers/{Offer.objects.last().pk}/offer-details/'
         self.assertEqual(redirect_url, response.headers.get('Location'))
 
     def test_edit_offer_view_when_data_is_not_valid_expect_redirect_with_errors(self):
@@ -325,7 +325,7 @@ class TestEditOfferView(BaseTestCase):
             'comment': '22 pallets',
         }
 
-        response = self.client.post(reverse('edit_offer', kwargs={'pk': 1}), data=entered_data2)
+        response = self.client.post(reverse('edit_offer', kwargs={'pk': offer.pk}), data=entered_data2)
 
         self.assertIsNotNone(response.context_data['form'].errors)
 
@@ -346,9 +346,9 @@ class TestEditCompanyProfileView(BaseTestCase):
             'company_email': 'ivan@new.com',
             'phone_number': '+359888888888'
         }
-        response = self.client.post(reverse('edit_profile', kwargs={'pk': 1}), data=entered_data2)
+        response = self.client.post(reverse('edit_profile', kwargs={'pk': user.pk}), data=entered_data2)
 
-        redirect_url = f'/exchange/1/profile/'
+        redirect_url = f'/exchange/{user.pk}/profile/'
 
         self.assertEqual(redirect_url, response.headers.get('Location'))
 

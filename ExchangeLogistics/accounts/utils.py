@@ -12,6 +12,6 @@ class BaseTestCase(TestCase):
             'password2': '3048lask',
         }
         self.client.post(reverse('register'), data=entered_data1)
-        user = UserModel.objects.get(pk=1)
+        user = UserModel.objects.last()
         return user
 
