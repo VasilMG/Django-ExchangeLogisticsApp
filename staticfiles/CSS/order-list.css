@@ -25,6 +25,12 @@ form.d-flex {
     height: 80vh;
 }
 
+@media (width <= 1000px) {
+    .offers-content {
+    height: auto;
+    }
+}
+
 @media (width <= 600px) {
     form.d-flex {
     width: 70%;
