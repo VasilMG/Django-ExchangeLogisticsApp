@@ -3,9 +3,9 @@ import os
 
 # Configure the domain name using the environment variable
 # that Azure automatically creates for us.
-ALLOWED_HOSTS = [os.environ['WEBSITE_HOSTNAME'], 'vasil-logistics.azurewebsites.net'] if 'WEBSITE_HOSTNAME' in os.environ else ['vasil-logistics.azurewebsites.net']
+ALLOWED_HOSTS = [os.environ['WEBSITE_HOSTNAME']] if 'WEBSITE_HOSTNAME' in os.environ else []
 
-CSRF_TRUSTED_ORIGINS = ['WEBSITE_HOSTNAME', 'vasil-logistics.azurewebsites.net']
+CSRF_TRUSTED_ORIGINS = ['WEBSITE_HOSTNAME']
 
 # WhiteNoise configuration
 MIDDLEWARE = [                                                                   
