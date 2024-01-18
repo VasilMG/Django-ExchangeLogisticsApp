@@ -1,7 +1,7 @@
 # ExchangeLogisticsApp
 This is an app for a logistics company with built in freight exchange.</br></br>
 You can check out the app on Azure - https://exchange-logistics-ci-cd.onrender.com/</br>
-It is a free app service and the app is unloaded when it is inactive for a long period of time. It reloads when a request is made to the url and it may take up to 10 seconds to load the frist time.
+It is a free app service and the app is unloaded when it is inactive for a long period of time. It reloads when a request is made to the url and it may take up to 10-15 seconds to load the frist time.
 
 Stack used:
  - python
